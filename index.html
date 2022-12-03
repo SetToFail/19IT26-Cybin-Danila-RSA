@@ -25,20 +25,34 @@
 			p = Math.round(document.getElementById('p').value);
 			q = Math.round(document.getElementById('q').value);
 			e = Math.round(document.getElementById('e').value);
-			n = p * q;
-			console.log(n);
+			for (var i = 1; i <= (p - 1) * (q - 1); i++ ){
+				if(e % i == 0 && (p - 1) * (q - 1) % i == 0){
+					n = p * q;
+					console.log("e = " + e + "; n = " + n);
+					break;
+				}
+				else
+				{
+					console.log("Неверно введено е")
+					break;
+				}
+				console.log("e = " + e + "; n = " + n);
+			}
 		}
 		function enc (){
 			m = document.getElementById('m').value;
 			c = m**e % n;
-			console.log(c);
+			console.log("c = " + c);
 		}
 		function dec() {
-			d = e % n;
-			console.log(d);
-			var res = (c**d) % n;
-			d = 1;
-			console.log(res);
+			for (var i = 2; i < q || p; i++) {
+						if((i * e) % ((p - 1) * (q - 1)) == 1){
+							d = i;
+							break;
+						}
+					}
+			var res = c**d % n;
+			console.log("d = " + d + "; результат расшифровки: " + res);
 		}
 	</script>
 </body>
