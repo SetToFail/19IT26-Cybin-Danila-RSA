@@ -22,20 +22,24 @@
 		var c = 0;
 		var d = 0;
 		function gen () {
+			var flag = false;
 			p = Math.round(document.getElementById('p').value);
 			q = Math.round(document.getElementById('q').value);
 			e = Math.round(document.getElementById('e').value);
-			for (var i = 1; i <= (p - 1) * (q - 1); i++ ){
-				if(e % i == 0 && (p - 1) * (q - 1) % i == 0){
-					n = p * q;
-					console.log("e = " + e + "; n = " + n);
-					break;
+			for (var i = 2; i < (p - 1) * (q - 1); i++ ){
+				if(e % i == 0 && ((p - 1) * (q - 1)) % i == 0){
+					flag = true;
 				}
 				else
 				{
-					console.log("Неверно введено е")
-					break;
+					n = p * q;
+					console.log(n);
 				}
+			}
+			if (flag){
+				console.log("Неправильный ввод");
+			}
+			else{
 				console.log("e = " + e + "; n = " + n);
 			}
 		}
@@ -51,8 +55,9 @@
 							break;
 						}
 					}
+
 			var res = c**d % n;
-			console.log("d = " + d + "; результат расшифровки: " + res);
+			console.log("d = " + c, d, n + "; результат расшифровки: " + res);
 		}
 	</script>
 </body>
